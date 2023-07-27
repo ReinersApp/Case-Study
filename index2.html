@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="shortcut icon" href="./img/landshut_logo.jpg">
+    <script src="./index.js"></script>   
+    <title>HAW Landshut Prüfungseinsicht - Anmeldung</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <ul class="nav nav-pills p-3" style="background-color: #57fff1;">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./index2.html">Anmeldung</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-black" href="./index3.html">Übersicht</a>
+        </li>
+        <li class="nav-item ms-auto">
+            <a onclick="checker()" class="nav-link btn-confirm text-black" id="logoutBtn" href="./index.html">Logout</a>
+        </li>
+    </ul>
+    <!-- Funktion Logout -->
+    <script>
+        function checker() {
+            var result = confirm('Bist du sicher, dass du dich ausloggen willst?');
+            if (result == false) {
+                event.preventDefault();
+            }
+        }
+    </script>
+
+    <div class="container mt-3">
+        <h1 class="text-center mb-4">Prüfungseinsicht Manager - Anmeldung</h1>
+
+        <!-- Grid 1 -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Grundlagen Controlling</h5>
+                        <p class="card-text">Prof. Dr. Dieses - Raum G01 07</p>
+                        <p class="card-text"><small class="text-body">29.08.2023 - von 17:00 bis 19:00</small></p>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" value="Grundlagen Controlling"
+                                id="anmelden1">
+                            <label class="form-check-label" for="anmelden1">Anmelden zur Prüfungseinsicht</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Grundlagen Personalmanagement</h5>
+                        <p class="card-text">Prof. Dr. Speidl - Raum A00 01</p>
+                        <p class="card-text"><small class="text-body">28.08.2023 - von 15:30 bis 17:30</small></p>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" value="Grundlagen Personalmanagement"
+                                id="anmelden2">
+                            <label class="form-check-label" for="anmelden2">Anmelden zur Prüfungseinsicht</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Seminar: Unternehmensnachfolge</h5>
+                        <p class="card-text">Prof. Dr. Zinser - Raum D02 08</p>
+                        <p class="card-text"><small class="text-body">24.08.2023 - von 15:00 bis 17:00</small></p>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" value="Seminar: Unternehmensnachfolge"
+                                id="anmelden3">
+                            <label class="form-check-label" for="anmelden3">Anmelden zur Prüfungseinsicht</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid 2 -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Daten & Algorithmen</h5>
+                        <p class="card-text">Frau Zilker - Raum G01 07</p>
+                        <p class="card-text"><small class="text-body">29.08.2023 - von 14:00 bis 15:00</small></p>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" value="Daten & Algorithmen"
+                                id="anmelden4">
+                            <label class="form-check-label" for="anmelden4">Anmelden zur Prüfungseinsicht</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Grundlagen Marketing</h5>
+                        <p class="card-text">Prof. Dr. Gronover - Raum A00 01</p>
+                        <p class="card-text"><small class="text-body">28.08.2023 - von 15:30 bis 17:30</small></p>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" value="Grundlagen Marketing"
+                                id="anmelden5">
+                            <label class="form-check-label" for="anmelden5">Anmelden zur Prüfungseinsicht</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">KI: Datascience & Machine Learning</h5>
+                        <p class="card-text">Prof. Dr. Greipl - Raum B02 08</p>
+                        <p class="card-text"><small class="text-body">23.08.2023 - von 15:00 bis 17:00</small></p>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" value="KI: Datascience & Machine Learning"
+                                id="anmelden6">
+                            <label class="form-check-label" for="anmelden6">Anmelden zur Prüfungseinsicht</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Anmelde Button -->
+         <div class="text-center">
+            <button class="btn btn-primary" id="anmeldenButton" disabled>Anmelden zur Prüfungseinsicht</button>
+        </div>
+    </div>
+
+
+     <!-- Funktion Anemlde Buttons -->
+     <script>
+        const anmeldenButton = document.getElementById('anmeldenButton');
+
+        // Funktion zum Aktualisieren des Anmelden-Buttons, basierend auf den ausgewählten Prüfungen
+        function updateAnmeldenButton() {
+            const checkboxes = document.querySelectorAll('input.form-check-input:checked');
+            anmeldenButton.disabled = checkboxes.length === 0;
+        }
+
+        // Event Listener für die Änderung der Auswahl von Checkboxen
+        document.querySelectorAll('input.form-check-input').forEach(checkbox => {
+            checkbox.addEventListener('change', updateAnmeldenButton);
+        });
+
+        // Event Listener für den Klick auf den Anmelden-Button
+        anmeldenButton.addEventListener('click', () => {
+            // Alle ausgewählten Prüfungen in einem Array sammeln und in LocalStorage speichern
+            const checkedPruefungen = Array.from(document.querySelectorAll('input.form-check-input:checked'))
+                .map(checkbox => checkbox.value);
+
+            localStorage.setItem('angemeldetePruefungen', JSON.stringify(checkedPruefungen));
+            // Weiterleitung zur index3.html-Seite
+            window.location.href = './index3.html';
+        });
+    </script>
+
+</body>
+
+</html>

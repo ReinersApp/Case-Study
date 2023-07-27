@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="shortcut icon" href="./img/landshut_logo.jpg">
+    <script src="./index.js"></script>
+    <title>HAW Landshut Prüfungseinsicht - Login</title>
+</head>
+<body>
+    <!-- Login-Formular -->
+    <div class="container my-3">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <!-- HAW Landshut Logo -->
+                <img src="img/landshut_logo.jpg" class="img-fluid d-block mx-auto" alt="Logo HAW Landshut" height="180px" width="180px">
+                <h3 class="fw-bold text-center mt-4">Prüfungseinsicht Manager - Login</h3>
+                <!-- Login-Formular -->
+                <form onsubmit="return validateEmail()">
+                    <!-- E-Mail -->
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                        <input type="email" class="form-control" placeholder="s-exam@haw-landshut.de"
+                            id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                    </div>
+                    <!-- Passwort -->
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Passwort</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="*********" required>
+                    </div>
+                    <!-- Login-Button -->
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+                <!-- Passwort vergessen und Datenschutz -->
+                <div class="d-flex justify-content-between mt-3">
+                    <div>
+                        <a href="https://www.haw-landshut.de/hochschule/zentrale-services/service-it/faq.html" id="Passwort_vergessen_Link">Passwort vergessen?</a>
+                    </div>
+                    <div>
+                        <a href="https://www.haw-landshut.de/datenschutz.html" id="datenschutz_link">Datenschutz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Überprüfung E-Mail-Adresse -->
+    <script>
+        function validateEmail() {
+            const emailInput = document.getElementById("exampleInputEmail1");
+            const email = emailInput.value.trim();
+
+            // Überprüfen --> E-Mail-Adresse mit 's-' beginnt und auf '@haw-landshut.de' endet
+            // Fall 1 x x
+            if (!email.startsWith("s-") && !email.endsWith("@haw-landshut.de")) {
+                alert("Die E-Mail-Adresse muss mit 's-' beginnen und auf '@haw-landshut.de' enden.");
+                return false;
+            //Fall 2 x y
+            } else if (!email.startsWith("s-")) {
+                alert("Die E-Mail-Adresse muss mit 's-' beginnen.");
+                return false;
+            //Fall 3 y x
+            } else if (!email.endsWith("@haw-landshut.de")) {
+                alert("Die E-Mail-Adresse muss auf '@haw-landshut.de' enden.");
+                return false;
+            } else {
+                // Weiterleitung zur nächsten Seite bei korrekter E-Mail-Adresse y y
+                window.location.href = "./index2.html";
+                return false; // Formular nicht absenden
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="shortcut icon" href="./img/landshut_logo.jpg">
+    <script src="./index.js"></script>
+    <title>HAW Landshut Prüfungseinsicht - Übersicht</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <ul class="nav nav-pills p-3" style="background-color: #57fff1;">
+        <li class="nav-item">
+            <a class="nav-link text-black" href="./index2.html">Anmeldung</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./index3.html">Übersicht</a>
+        </li>
+        <li class="nav-item ms-auto">
+            <a onclick="checker()" class="nav-link btn-confirm text-black" id="logoutBtn"
+                href="./index.html">Logout</a>
+        </li>
+    </ul>
+    <!-- Funktion Logout -->
+    <script>
+        function checker() {
+            var result = confirm('Bist du sicher, dass du dich ausloggen willst?');
+            if (result == false) {
+                event.preventDefault();
+            }
+        }
+    </script>
+
+    <div class="container mt-3">
+        <h1 class="text-center mb-4">Prüfungseinsicht Manager - Übersicht</h1>
+
+        <!-- Angemeldeten Prüfungen -->
+        <div class="row" id="angemeldetePruefungen">
+            <!-- Angemeldeten Prüfungen dynamisch hinzugefügt -->
+        </div>
+    </div>
+
+    <!-- Button Übersicht per Email erhalten -->
+    <div class="text-center mt-4">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmationModal">Übersicht per Email
+            erhalten</button>
+    </div>
+
+    <!-- Modal Email -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel">Bestätigung erhalten</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    In kürze erhälst du eine Email mit den bestätigten Terminen. Überprüfe gegebenenfalls deinen
+                    Spam-Ordner.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Darstellung und Verwaltung der angemeldeten Prüfungen -->
+    <script>
+        const angemeldetePruefungenListe = document.getElementById('angemeldetePruefungen');
+
+        // Funktion zum Abmelden von einer Prüfung
+        function abmelden(pruefung) {
+            const angemeldetePruefungen = JSON.parse(localStorage.getItem('angemeldetePruefungen')) || [];
+            const index = angemeldetePruefungen.indexOf(pruefung);
+            if (index !== -1) {
+                angemeldetePruefungen.splice(index, 1);
+                updateAngemeldetePruefungen(angemeldetePruefungen);
+            }
+        }
+
+        // Aktualisieren der Darstellung der angemeldeten Prüfungen
+        function updateAngemeldetePruefungen(angemeldetePruefungen) {
+            localStorage.setItem('angemeldetePruefungen', JSON.stringify(angemeldetePruefungen));
+
+            angemeldetePruefungenListe.innerHTML = '';
+            angemeldetePruefungen.forEach(pruefung => {
+                const card = document.createElement('div');
+                card.classList.add('col-md-4');
+                card.innerHTML = `
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">${pruefung}</h5>
+                            <p class="card-text">${getDozent(pruefung)} - ${getRaum(pruefung)}</p>
+                            <p class="card-text"><small class="text-body">${getDatum(pruefung)}</small></p>
+                            <button class="btn btn-danger btn-sm" onclick="abmelden('${pruefung}')">Abmelden</button>
+                        </div>
+                    </div>
+                `;
+                angemeldetePruefungenListe.appendChild(card);
+            });
+        }
+
+        // Abrufen des Dozenten Namens basierend auf dem Prüfungsnamen
+        function getDozent(pruefung) {
+            const dozenten = {
+                "Grundlagen Controlling": "Prof. Dr. Dieses",
+                "Grundlagen Personalmanagement": "Prof. Dr. Speidl",
+                "Seminar: Unternehmensnachfolge": "Prof. Dr. Zinser",
+                "Daten & Algorithmen": "Frau Zilker",
+                "Grundlagen Marketing": "Prof. Dr. Gronover",
+                "KI: Datascience & Machine Learning": "Prof. Dr. Greipl"
+            };
+            return dozenten[pruefung] || "";
+        }
+
+        // Abrufen des Raum-Namens basierend auf dem Prüfungsnamen
+        function getRaum(pruefung) {
+            const raeume = {
+                "Grundlagen Controlling": "Raum G01 07",
+                "Grundlagen Personalmanagement": "Raum A00 01",
+                "Seminar: Unternehmensnachfolge": "Raum D02 08",
+                "Daten & Algorithmen": "Raum G01 07",
+                "Grundlagen Marketing": "Raum A00 01",
+                "KI: Datascience & Machine Learning": "Raum  A1 08"
+            };
+            return raeume[pruefung] || "";
+        }
+
+        // Abrufen des Datums basierend auf dem Prüfungsnamen
+        function getDatum(pruefung) {
+            const daten = {
+                "Grundlagen Controlling": "29.08.2023 - von 17:00 bis 19:00",
+                "Grundlagen Personalmanagement": "28.08.2023 - von 10:30 bis 12:30",
+                "Seminar: Unternehmensnachfolge": "24.08.2023 - von 15:00 bis 17:00",
+                "Daten & Algorithmen": "29.08.2023 - von 14:00 bis 15:00",
+                "Grundlagen Marketing": "28.08.2023 - von 15:30 bis 17:30",
+                "KI: Datascience & Machine Learning": "23.08.2023 - von 15:00 bis 17:00"
+            };
+            return daten[pruefung] || "";
+        }
+
+        // Initialisieren der Seite und Anzeigen der angemeldeten Prüfungen
+        function init() {
+            const angemeldetePruefungen = JSON.parse(localStorage.getItem('angemeldetePruefungen')) || [];
+            updateAngemeldetePruefungen(angemeldetePruefungen);
+        }
+
+        // Initialisierung aufrufen
+        init();
+    </script>
+</body>
+
+</html>
